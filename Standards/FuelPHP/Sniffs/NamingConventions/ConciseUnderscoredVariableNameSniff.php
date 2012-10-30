@@ -84,8 +84,9 @@ class FuelPHP_Sniffs_NamingConventions_ConciseUnderscoredVariableNameSniff
         }
 
         $name = $tokens[$stackPtr]['content'];
+        $ignore_names = ['$_SERVER', '$_POST', '$_GET', '$_REQUEST', '$_COOKIE'];
 
-        if (FuelPHP_Sniffs_NamingConventions_UnderscoredWithScopeFunctionNameSniff::isUnderscoreName($name) === false) {
+        if (FuelPHP_Sniffs_NamingConventions_UnderscoredWithScopeFunctionNameSniff::isUnderscoreName($name) === false && ! in_array($name, $ignore_names)) {
             $error = 'Variable name "%s" does not use underscore format.
                 Upper case forbidden.';
             $phpcsFile->addError($error, $stackPtr, 'NotUnderscore');
