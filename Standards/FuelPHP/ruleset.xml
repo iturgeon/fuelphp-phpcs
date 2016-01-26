@@ -51,7 +51,7 @@ THE SOFTWARE.
 
     <!--
         Line Endings
-        
+
         Line endings should be Unix-style LF.
     -->
     <rule ref="Generic.Files.LineEndings">
@@ -79,7 +79,7 @@ THE SOFTWARE.
         # Naming Conventions #
         ######################
     -->
-    
+
     <!--
         Namespaces
 
@@ -90,31 +90,31 @@ THE SOFTWARE.
     <!--
         Classes
 
-        Class names should use underscores to separate words, and each word 
-        in the class name should begin with a capital letter. 
+        Class names should use underscores to separate words, and each word
+        in the class name should begin with a capital letter.
     -->
     <rule ref="PEAR.NamingConventions.ValidClassName"/>
 
     <!--
         Methods
 
-        Method names should use underscores to separate words, not CamelCase. 
-        Method names should also be all lower case. 
-        Visibility should always be included (public, protected, private).        
+        Method names should use underscores to separate words, not CamelCase.
+        Method names should also be all lower case.
+        Visibility should always be included (public, protected, private).
     -->
     <rule ref="FuelPHP.NamingConventions.UnderscoredWithScopeFunctionName" />
 
     <!--
         Variables
 
-        Variable names should be concise and contain only lower case letters and underscores. 
+        Variable names should be concise and contain only lower case letters and underscores.
     -->
     <rule ref="FuelPHP.NamingConventions.ConciseUnderscoredVariableName" />
 
     <!--
         Constants
 
-        Constants follow the same guide lines as variables with the exception that constants 
+        Constants follow the same guide lines as variables with the exception that constants
         should be all upper case.
     -->
     <rule ref="Generic.NamingConventions.UpperCaseConstantName"/>
@@ -122,8 +122,8 @@ THE SOFTWARE.
     <!--
         Keywords
 
-        Keywords such as true, false, null, as, etc should be all lower case, as upper case 
-        is reserved for constants. 
+        Keywords such as true, false, null, as, etc should be all lower case, as upper case
+        is reserved for constants.
         Same goes for primitive types like array, integer, string.
     -->
     <rule ref="Generic.PHP.LowerCaseConstant"/>
@@ -136,8 +136,8 @@ THE SOFTWARE.
     <!--
         Control Structures
 
-        The structure keywords such as if, for, foreach, while, switch should be followed by a space 
-        as should parameter/argument lists and values. 
+        The structure keywords such as if, for, foreach, while, switch should be followed by a space
+        as should parameter/argument lists and values.
         Braces should be placed on a new line, and break should have the same tab as its case.
     -->
     <rule ref="Squiz.ControlStructures.ForEachLoopDeclaration" />
@@ -148,8 +148,8 @@ THE SOFTWARE.
     <!--
         Alternative if statements
 
-        In some cases, a full if statement is a bit too much code for a simple conditional assignment or function call. 
-        In those cases, you can use PHP's execution logic to use a shorter boolean-operator based syntax. 
+        In some cases, a full if statement is a bit too much code for a simple conditional assignment or function call.
+        In those cases, you can use PHP's execution logic to use a shorter boolean-operator based syntax.
         Using and means the second part only gets evaluated if the first part were true, using or means the second part only gets executed if the first part were false.
         Don't use this when both if and else are needed, just in cases like single conditional statements.
     -->
@@ -160,12 +160,12 @@ THE SOFTWARE.
         # Comparisons, Logical operators #
         ##################################
     -->
-    
+
     <!--
         Comparing function/method returns and variables should be type aware, for example some functions may return false,
         and when comparing this return the type sensitive operators such as === or !==.
-        Additionally, use of and or or is preferred over && or || for readability. 
-        In some cases, this cannot be avoided and the use of && or || as its required may be used. 
+        Additionally, use of and or or is preferred over && or || for readability.
+        In some cases, this cannot be avoided and the use of && or || as its required may be used.
         The ! should have spaces on both sides when used.
     -->
     <rule ref="FuelPHP.WhiteSpace.NotOperatorSpacing" />
@@ -181,7 +181,7 @@ THE SOFTWARE.
 
     <!--
         Function/Method/Closure Declarations
-        
+
         The function/method/closure opening brace must always begin on a new line and have the same indentation as its structure.
     -->
     <rule ref="Generic.Functions.OpeningFunctionBraceBsdAllman" />
@@ -189,10 +189,10 @@ THE SOFTWARE.
     <!--
         Variables
 
-        When initializing variables, one variable should be declared per line. 
+        When initializing variables, one variable should be declared per line.
         To enhance code readability, these should each be on a separate line.
         Align values and comments when appropriate.
-                
+
         Note : this is extended to one statement per line
     -->
     <rule ref="Generic.Formatting.DisallowMultipleStatements" />
@@ -200,7 +200,7 @@ THE SOFTWARE.
     <!--
         Brackets and Parenthesis
 
-        No space should come before or after the initial bracket/parenthesis. 
+        No space should come before or after the initial bracket/parenthesis.
         There should not be a space before closing bracket/parenthesis.
     -->
         <rule ref="Squiz.Arrays.ArrayBracketSpacing" />
@@ -215,8 +215,13 @@ THE SOFTWARE.
         Concatenation
 
         String concatenation should not contain spaces around the joined parts.
+        A newline following the concatenation operator is allowed
     -->
-    <rule ref="Squiz.Strings.ConcatenationSpacing" />
+    <rule ref="Squiz.Strings.ConcatenationSpacing">
+        <properties>
+            <property name="ignoreNewlines" value="true"/>
+        </properties>
+    </rule>
 
     <!--
         Operators
