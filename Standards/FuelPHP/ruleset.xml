@@ -196,6 +196,7 @@ THE SOFTWARE.
         Note : this is extended to one statement per line
     -->
     <rule ref="Generic.Formatting.DisallowMultipleStatements" />
+    <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
 
     <!--
         Brackets and Parenthesis
