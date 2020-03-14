@@ -26,8 +26,12 @@
  * @version   Release: 1.0.0
  * @link      http://pear.php.net/package/PHP_CodeSniffer
  */
-class FuelPHP_Sniffs_WhiteSpace_IncrementDecrementSpacingSniff 
-    implements PHP_CodeSniffer_Sniff
+namespace FuelPHP\Sniffs\WhiteSpace;
+
+use PHP_CodeSniffer\Sniffs\Sniff;
+use PHP_CodeSniffer\Files\File;
+
+class IncrementDecrementSpacingSniff implements Sniff
 {
 
     /**
@@ -50,7 +54,7 @@ class FuelPHP_Sniffs_WhiteSpace_IncrementDecrementSpacingSniff
         return array(
             T_INC,
             T_DEC,
-            T_VARIABLE,            
+            T_VARIABLE,
         );
     }
 
@@ -63,17 +67,17 @@ class FuelPHP_Sniffs_WhiteSpace_IncrementDecrementSpacingSniff
      *
      * @return void
      */
-    public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
+    public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
-        if ($tokens[$stackPtr]['code'] === T_INC 
+        if ($tokens[$stackPtr]['code'] === T_INC
             || $tokens[$stackPtr]['code'] === T_DEC
         ) {
-            if ($tokens[$stackPtr - 1]['code'] !== T_VARIABLE 
+            if ($tokens[$stackPtr - 1]['code'] !== T_VARIABLE
                 && $tokens[$stackPtr + 1]['code'] !== T_VARIABLE
                 && $tokens[$stackPtr + 1]['code'] !== T_SEMICOLON
             ) {
-                $error = 'Increment and decrement operators need to be close to 
+                $error = 'Increment and decrement operators need to be close to
                     their variable. No inside space is allowed.';
                 $phpcsFile->addError($error, $stackPtr, 'NoInsideSpaceAllowed');
             }

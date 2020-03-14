@@ -25,7 +25,12 @@
  * @version   Release: 1.4.0
  * @link      http://pear.php.net/package/PHP_CodeSniffer
  */
-class FuelPHP_Sniffs_Arrays_ArrayDeclarationSniff implements PHP_CodeSniffer_Sniff
+namespace FuelPHP\Sniffs\Arrays;
+
+use PHP_CodeSniffer\Sniffs\Sniff;
+use PHP_CodeSniffer\Files\File;
+
+class ArrayDeclarationSniff implements Sniff
 {
 
 
@@ -69,7 +74,7 @@ class FuelPHP_Sniffs_Arrays_ArrayDeclarationSniff implements PHP_CodeSniffer_Sni
      *
      * @return void
      */
-    public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
+    public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
 

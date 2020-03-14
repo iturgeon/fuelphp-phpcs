@@ -28,7 +28,13 @@
  * @version   Release: 1.4.0
  * @link      http://pear.php.net/package/PHP_CodeSniffer
  */
-class FuelPHP_Sniffs_ControlStructures_SwitchDeclarationSniff implements PHP_CodeSniffer_Sniff
+namespace FuelPHP\Sniffs\ControlStructures;
+
+use PHP_CodeSniffer\Sniffs\Sniff;
+use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Util\Tokens;
+
+class SwitchDeclarationSniff implements Sniff
 {
 
     /**
@@ -63,7 +69,7 @@ class FuelPHP_Sniffs_ControlStructures_SwitchDeclarationSniff implements PHP_Cod
      *
      * @return void
      */
-    public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
+    public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
 
@@ -202,7 +208,7 @@ class FuelPHP_Sniffs_ControlStructures_SwitchDeclarationSniff implements PHP_Cod
                                 continue;
                             }
 
-                            if (in_array($tokens[$i]['code'], PHP_CodeSniffer_Tokens::$emptyTokens) === false) {
+                            if (in_array($tokens[$i]['code'], Tokens::$emptyTokens) === false) {
                                 $foundContent = true;
                                 break;
                             }

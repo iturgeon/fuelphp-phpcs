@@ -26,8 +26,12 @@
  * @version   Release: 1.0.0
  * @link      http://pear.php.net/package/PHP_CodeSniffer
  */
-class FuelPHP_Sniffs_NamingConventions_LowerCaseFileNameSniff 
-    implements PHP_CodeSniffer_Sniff
+namespace FuelPHP\Sniffs\NamingConventions;
+
+use PHP_CodeSniffer\Sniffs\Sniff;
+use PHP_CodeSniffer\Files\File;
+
+class LowerCaseFileNameSniff  implements Sniff
 {
 
     /**
@@ -43,7 +47,7 @@ class FuelPHP_Sniffs_NamingConventions_LowerCaseFileNameSniff
 
     /**
      * last file name checked
-     * 
+     *
      * @var string
      */
     protected static $lastfile = '';
@@ -67,7 +71,7 @@ class FuelPHP_Sniffs_NamingConventions_LowerCaseFileNameSniff
      *
      * @return void
      */
-    public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
+    public function process(File $phpcsFile, $stackPtr)
     {
         $filename = $phpcsFile->getFilename();
         if (static::$lastfile === $filename) {

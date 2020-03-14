@@ -26,8 +26,12 @@
  * @version   Release: 1.0.0
  * @link      http://pear.php.net/package/PHP_CodeSniffer
  */
-class FuelPHP_Sniffs_WhiteSpace_NotOperatorSpacingSniff 
-    implements PHP_CodeSniffer_Sniff
+namespace FuelPHP\Sniffs\WhiteSpace;
+
+use PHP_CodeSniffer\Sniffs\Sniff;
+use PHP_CodeSniffer\Files\File;
+
+class NotOperatorSpacingSniff implements Sniff
 {
 
     /**
@@ -61,7 +65,7 @@ class FuelPHP_Sniffs_WhiteSpace_NotOperatorSpacingSniff
      *
      * @return void
      */
-    public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
+    public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
         if ($tokens[$stackPtr]['code'] === T_BOOLEAN_NOT)
@@ -76,6 +80,6 @@ class FuelPHP_Sniffs_WhiteSpace_NotOperatorSpacingSniff
                 $error = 'A space need to be set after the ! operator.';
                 $phpcsFile->addError($error, $stackPtr, 'SpaceAfterNotOperator');
             }
-        }        
+        }
     }
 }

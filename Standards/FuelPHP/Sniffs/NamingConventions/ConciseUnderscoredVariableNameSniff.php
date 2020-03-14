@@ -12,12 +12,6 @@
  * @license   http://opensource.org/licenses/MIT MIT License
  * @link      http://pear.php.net/package/PHP_CodeSniffer
  */
-if (class_exists('FuelPHP_Sniffs_NamingConventions_UnderscoredWithScopeFunctionNameSniff', true) === false) {
-    throw new PHP_CodeSniffer_Exception(
-        'Class FuelPHP_Sniffs_NamingConventions_UnderscoredWithScopeFunctionNameSniff not found'
-    );
-}
-
 /**
  * FuelPHP_Sniffs_NamingConventions_ConciseUnderscoredVariableNameSniff.
  *
@@ -31,8 +25,13 @@ if (class_exists('FuelPHP_Sniffs_NamingConventions_UnderscoredWithScopeFunctionN
  * @version   Release: 1.0.0
  * @link      http://pear.php.net/package/PHP_CodeSniffer
  */
-class FuelPHP_Sniffs_NamingConventions_ConciseUnderscoredVariableNameSniff 
-    implements PHP_CodeSniffer_Sniff
+namespace FuelPHP\Sniffs\NamingConventions;
+
+use PHP_CodeSniffer\Sniffs\Sniff;
+use PHP_CodeSniffer\Files\File;
+use FuelPHP\Sniffs\NamingConventions\UnderscoredWithScopeFunctionNameSniff;
+
+class ConciseUnderscoredVariableNameSniff implements Sniff
 {
 
     /**
@@ -48,8 +47,8 @@ class FuelPHP_Sniffs_NamingConventions_ConciseUnderscoredVariableNameSniff
 
     /**
      * variable name length limit
-     * 
-     * @var integer 
+     *
+     * @var integer
      */
     public $maxlength = 30;
 
@@ -72,7 +71,7 @@ class FuelPHP_Sniffs_NamingConventions_ConciseUnderscoredVariableNameSniff
      *
      * @return void
      */
-    public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
+    public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
 
@@ -86,7 +85,7 @@ class FuelPHP_Sniffs_NamingConventions_ConciseUnderscoredVariableNameSniff
         $name = $tokens[$stackPtr]['content'];
         $ignore_names = ['$_SERVER', '$_POST', '$_GET', '$_REQUEST', '$_COOKIE'];
 
-        if (FuelPHP_Sniffs_NamingConventions_UnderscoredWithScopeFunctionNameSniff::isUnderscoreName($name) === false && ! in_array($name, $ignore_names)) {
+        if (UnderscoredWithScopeFunctionNameSniff::isUnderscoreName($name) === false && ! in_array($name, $ignore_names)) {
             $error = 'Variable name "%s" does not use underscore format.
                 Upper case forbidden.';
             $phpcsFile->addError($error, $stackPtr, 'NotUnderscore');
