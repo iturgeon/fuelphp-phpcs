@@ -236,7 +236,7 @@ class UnderscoredWithScopeFunctionNameSniff extends AbstractVariableSniff
                 continue;
             }
 
-            if ($bit{0} !== strtolower($bit{0})) {
+            if ($bit[0] !== strtolower($bit[0])) {
                 $validName = false;
                 break;
             }
